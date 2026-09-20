@@ -1,5 +1,3 @@
-# Battery-SOH-Forecasting-Using-Temporal-Convolution-and-Channel-Attention
-This project presents a deep learning framework for Battery State of Health (SOH) prediction using a Temporal Convolutional Network with Squeeze-and-Excitation. The proposed approach predicts future battery SOH using only historical SOH measurements, eliminating the need for dataset-specific feature engineering or additional input variables.
 # Deep Learning-Based Battery State of Health Prediction Using TCN-SE
 
 A deep learning framework for **Battery State of Health (SOH) prediction** using only historical SOH sequences. The proposed framework combines a **Temporal Convolutional Network (TCN)** with a **Squeeze-and-Excitation (SE)** attention mechanism and **Mish activation** to capture long-term battery degradation patterns with a relatively small computational footprint.
