@@ -501,9 +501,10 @@ Higher R² indicates that a larger proportion of the variance in the actual SOH 
 ---
 
 
+# Dataset Capacity Degradation Trajectories
 
 <img width="1515" height="409" alt="image" src="https://github.com/user-attachments/assets/15333677-d7b1-4dd8-b548-b168c82113e4" />
-                                          Figure 1 — Dataset Capacity Degradation Trajectories
+                                         
 
 
 # TCN-SE Architecture
@@ -559,12 +560,11 @@ Input SOH Sequence
 ```
 
 
+# Actual vs Predicted SOH for all 13 evaluated battery cells
 <img width="961" height="694" alt="image" src="https://github.com/user-attachments/assets/4d5acd4c-bdd9-4b2d-9d57-cb66dfc08a7e" />
-                                             Figure 3 — Actual vs Predicted SOH
+                                            
 
-The paper reports that Figure 3 contains the actual and predicted SOH trajectories for all 13 evaluated battery cells.
 
----
 
 # Results
 
@@ -886,24 +886,6 @@ Future work described in the study includes:
 * End-to-end integration with IoT-based battery monitoring hardware.
 * Further investigation of deployment in real-world Cloud BMS environments.
 
----
-
-# Citation
-
-If you use this implementation or methodology in academic work, please cite the corresponding paper:
-
-```bibtex
-@article{tcn_se_battery_soh,
-  title   = {A Lightweight Univariate TCN-SE Framework for Battery State of Health Prediction},
-  author  = {Author Names},
-  journal = {Under Review},
-  year    = {2026}
-}
-```
-
-> Replace the citation information with the final bibliographic details after publication.
-
----
 
 # Results at a Glance
 
@@ -922,4 +904,4 @@ Best reported MAE         : 0.0014
 Dataset-average R²        : > 0.995 across all three datasets
 ```
 
-The reported results demonstrate that the proposed univariate TCN-SE framework can track diverse battery degradation trajectories while maintaining a consistent core configuration across the evaluated datasets.
+The reported results demonstrate that the proposed TCN-SE framework can track diverse battery degradation trajectories while maintaining a consistent core configuration across the evaluated datasets.
