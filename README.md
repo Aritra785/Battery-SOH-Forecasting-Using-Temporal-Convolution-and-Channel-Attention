@@ -500,27 +500,67 @@ Higher R² indicates that a larger proportion of the variance in the actual SOH 
 
 ---
 
-# Figures
-
-The paper contains three main figures.
-
 
 
 <img width="1515" height="409" alt="image" src="https://github.com/user-attachments/assets/15333677-d7b1-4dd8-b548-b168c82113e4" />
-### Figure 1 — Dataset Capacity Degradation Trajectories
+                                          Figure 1 — Dataset Capacity Degradation Trajectories
 
 
-### Figure 2 — TCN-SE Architecture
-
-```markdown
-![Figure 2: Architecture block diagram of the proposed TCN-SE framework](figures/fig2_tcn_se_architecture.png)
-```
-
-### Figure 3 — Actual vs Predicted SOH
+# TCN-SE Architecture
 
 ```markdown
-![Figure 3: SOH forecasting results of the proposed TCN-SE model across 13 experimental battery cells](figures/fig3_soh_forecasting.png)
+Input SOH Sequence
+       │
+       ▼
+1D Convolution (Feature Projection)
+       │
+  ┌────┴──────────────────────────┐
+  │                               ▼
+  │               Squeeze-and-Excitation (SE) Block
+  │             ┌───────────────────────────────────┐
+  │             │   Global Average Pooling 1D       │
+  │             │                 │                 │
+  │             │                 ▼                 │
+  │             │            Dense + ReLU           │
+  │             │                 │                 │
+  │             │                 ▼                 │
+  │             │           Dense + Sigmoid         │
+  │             └─────────────────┬─────────────────┘
+  │                               │ (Attention Weights)
+  │                               ▼
+  └───────────────► Scale (Channel-wise Mult) ◄── (Skip Connection)
+                                  │
+                                  ▼
+                Temporal Convolutional Network (TCN)
+                ┌───────────────────────────────────┐
+                │   TCN Block 1 (Dilation: 1)       │
+                │                 │                 │
+                │                 ▼                 │
+                │   TCN Block 2 (Dilation: 2)       │
+                │                 │                 │
+                │                 ▼                 │
+                │   TCN Block 3 (Dilation: 4)       │
+                └─────────────────┬─────────────────┘
+                                  │
+                                  ▼
+                       Global Integration Head
+                ┌───────────────────────────────────┐
+                │      Extract Last Time-step       │
+                │                 │                 │
+                │                 ▼                 │
+                │     Fully Connected (Dense 32)    │
+                │                 │                 │
+                │                 ▼                 │
+                │     Fully Connected (Dense 1)     │
+                └─────────────────┬─────────────────┘
+                                  │
+                                  ▼
+               Predicted SOH (Output Forecast at t+1)
 ```
+
+
+<img width="961" height="694" alt="image" src="https://github.com/user-attachments/assets/4d5acd4c-bdd9-4b2d-9d57-cb66dfc08a7e" />
+                                             Figure 3 — Actual vs Predicted SOH
 
 The paper reports that Figure 3 contains the actual and predicted SOH trajectories for all 13 evaluated battery cells.
 
